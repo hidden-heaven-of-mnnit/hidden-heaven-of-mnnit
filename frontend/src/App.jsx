@@ -3,11 +3,12 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 import TreasureLogin from './components/TreasureLogin'
-
+import HomePage from './components/HomePage'
 function App() {
   return (
     <>
       <TreasureLogin/>
+      {/* <HomePage/> */}
     </>
   )
 }
