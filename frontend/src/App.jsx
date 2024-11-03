@@ -1,23 +1,23 @@
-import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
-import TreasureLogin from './components/TreasureLogin'
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css';
+import TreasureLogin from './components/TreasureLogin';
+import Error from './components/Error';
 import HomePage from './components/HomePage'
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <><TreasureLogin/></>
-    },
-  ]);
   return (
-    <>
-      <TreasureLogin/>
-    </>
-  )
+    <GoogleOAuthProvider clientId="395344652006-jjrv3avri7o3qhlrupudfvhmr5hegfj4.apps.googleusercontent.com">
+      <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<TreasureLogin />} />
+        <Route path="/HomePage" element={<HomePage />} />
+        <Route path="/login" element={<TreasureLogin />} />
+        <Route path="/signup" element={<TreasureLogin />} />
+        <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
+  );
 }
 
-export default App
+export default App;
