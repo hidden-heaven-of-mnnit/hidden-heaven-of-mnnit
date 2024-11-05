@@ -1,5 +1,8 @@
-require('dotenv').config();
-const mongoose=require('mongoose'); 
-mongoose.connect(process.env.DB_URL,{
-    autoIndex:true
-})
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+
+dotenv.config();
+
+mongoose.connect(process.env.DB_URL, {
+    autoIndex: true
+});

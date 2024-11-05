@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HomePage.css";
+import { UserContext } from "../App";
+import TreasureLogin from "./TreasureLogin";
+import { removeFromSession } from "../../../backend/session";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  return (
+  const {userAuth,userAuth:{access_token ,name,image},setUserAuth}=useContext(UserContext);
+  const navigate = useNavigate();
+  const logout=()=>{
+    removeFromSession("user");
+    setUserAuth({access_token:null})
+    navigate('/');
+  }
+  return access_token?
+  (
     <div className="home-page">
+       <button onClick={logout}>Logout</button>
       <div className="content">
         <div className="login-box">
-          <h1 className="treasure-title">Welcome, Adventurer!</h1>
+          
+          <h1 className="treasure-title">Welcome, {name}!</h1>
           <p className="treasure-subtitle">Unlock the treasure with your quests</p>
         </div>
 
@@ -73,7 +87,10 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-  );
+    
+  )
+  :
+  (<TreasureLogin/>);
 };
 
 export default HomePage;

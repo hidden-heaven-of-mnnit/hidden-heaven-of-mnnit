@@ -1,25 +1,36 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const User = require('./schema/UserSchema.js');
-require('./dbConnection.js');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const multer=require('multer')
-const path = require('path'); 
+import express from 'express';
+import bcrypt from 'bcrypt';
+import User from './schema/UserSchema.js';
+import './dbConnection.js'; 
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import cors from 'cors';
+import multer from 'multer';
+import path from 'path';
+import admin from 'firebase-admin';
+import { getAuth } from 'firebase-admin/auth';
+import googleService from './hidden-heaven-of-mnnit-94fab-firebase-adminsdk-amnju-e80144a671.json' assert { type: 'json' }; // Use assert for JSON import if needed
+
 dotenv.config();
+
 const app = express();
 const port = process.env.PORT;
 
+
 app.use(cors());
 app.use(express.json());
-
+admin.initializeApp({
+    credential:admin.credential.cert(googleService)
+})
 
 let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
 let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/; 
 
 
 const formatDatatoSend=(user)=>{
+    const access_token=jwt.sign({id:user._id},process.env.JWT_SECRET)
     return{
+        access_token,
         name:user.name,
         email:user.email,
         image:user.image
@@ -57,7 +68,7 @@ app.post("/signup", (req, res) => {
             name: name,
             email: email,
             password: hashed_password,
-            image: null, 
+            
             authType: "manual"
         });        
         user.save()
@@ -100,6 +111,40 @@ app.post("/login",(req,res)=>{
         return res.status(500).json({"error":err.message})
     })
 });
+
+app.post("/google-auth",async(req,res)=>{
+    let {access_token}=req.body;
+    getAuth()
+    .verifyIdToken(access_token)
+    .then(async (decodeUser) => {
+        let {email,name,picture}=decodeUser;
+        picture=picture.replace("s96-c","s384-c") //resolution
+        let user = await User.findOne({ email: email });
+        if(user){
+            if(user.authType=="manual"){
+                return res.status(403).json({"error":"This email was signed up without google.Please login with password to access the account"})
+            }
+        }
+        else{
+            let user = new User({
+                name: name,
+                email: email,
+                image:picture,
+                authType: "google"
+            });  
+            await user.save().then((u)=>{
+                user=u;
+            })
+            .catch((err)=>{
+                return res.status(500).json({"error":err.message})
+            })
+        }
+        return res.status(200).json(formatDatatoSend(user))
+    })
+    .catch((err)=>{
+        return res.status(500).json({"error":"Failed to authenticate with google"})
+    })
+    })
 
 
 app.listen(port,()=>{
