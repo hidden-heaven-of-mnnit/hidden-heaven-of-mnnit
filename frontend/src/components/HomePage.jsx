@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
 import "./HomePage.css";
+import TreasureLogin from "./TreasureLogin"; 
+import { UserContext } from "../App";
 
 const HomePage = () => {
-  return (
+  const { userAuth } = useContext(UserContext); 
+  const name = userAuth?.name; 
+
+  return userAuth ? ( 
     <div className="home-page">
       <div className="content">
         <div className="login-box">
@@ -10,6 +15,7 @@ const HomePage = () => {
           <p className="treasure-subtitle">Unlock the treasure with your quests</p>
         </div>
         <div className="quests-container">
+          
           {/* Live Public Quest Section (Left) */}
           <div className="live-public-quest">
             <h2>Live Public Quest</h2>
@@ -41,42 +47,20 @@ const HomePage = () => {
             <h2>Your Past Quests</h2>
             <div className="quest-list">
               <ul>
-                <li className="past-quest-item">
-                  Quest 1 - Finished in 30 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
-                <li className="past-quest-item">
-                  Quest 2 - Finished in 45 minutes
-                </li>
+                <li className="past-quest-item">Quest 1 - Finished in 30 minutes</li>
+                <li className="past-quest-item">Quest 2 - Finished in 45 minutes</li>
+                <li className="past-quest-item">Quest 3 - Finished in 40 minutes</li>
                 {/* Additional past quest items */}
-                <li className="past-quest-item">
-                  Quest 3 - Finished in 40 minutes
-                </li>
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </div>
-    </div>
-    
-  )
-  :
-  (<TreasureLogin/>);
+  ) : (
+    <TreasureLogin /> 
+  );
 };
 
 export default HomePage;

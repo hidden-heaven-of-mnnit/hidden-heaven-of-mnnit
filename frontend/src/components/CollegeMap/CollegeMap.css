@@ -1,0 +1,36 @@
+.nav-bar-college-map{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.college-map-outer-box{
+    height: 100%;
+    width: 90%;
+}
+
+li{
+    list-style-type: none;
+    padding: 0%;
+    margin: 0%;
+    text-align: left;
+}
+.college-map-main-nav{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    cursor: pointer;
+}
+
+.college-map-main-nav nav{
+    align-items: end;
+}
+
+.college-map-main{
+    display: flex;
+}

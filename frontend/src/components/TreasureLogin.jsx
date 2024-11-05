@@ -81,10 +81,10 @@ const TreasureLogin = () => {
   return (
     <>
       <div className="outerBox">
-        <div className="map">
-          <h1 className="project-name">Hidden <br /> Heaven <br /> Of <br /> MNNIT</h1>
-        </div>
         <div className="treasure-container">
+        <div className="map">
+          <h1 className="project-name">Hidden Heaven Of MNNIT</h1>
+        </div>
           <div className="login-box">
             <h1 className="treasure-title">Welcome, Adventurer!</h1>
             <p className="treasure-subtitle">Unlock the treasure with your credentials</p>

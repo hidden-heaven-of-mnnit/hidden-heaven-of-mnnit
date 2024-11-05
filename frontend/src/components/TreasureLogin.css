@@ -1,8 +1,8 @@
 
 .treasure-container {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
   justify-content: center;
   height: 100vh;
   color: #FFF;
@@ -10,6 +10,8 @@
 
 .outerBox{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background-image: url("https://images.unsplash.com/photo-1608924066819-930edc42986a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
 
@@ -101,11 +103,7 @@
   cursor: pointer;
 }
 
-.map{
-  margin-top: 10%;
-  width: 70%;
-  
-}
+
 
 .project-name {
   color: #FFD700;
@@ -113,7 +111,7 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 2rem;
   font-variation-settings:
   "BLED" 0,
   "SCAN" 0,
