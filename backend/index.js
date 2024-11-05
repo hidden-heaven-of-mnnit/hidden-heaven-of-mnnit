@@ -68,6 +68,10 @@ app.post("/signup", (req, res) => {
             name: name,
             email: email,
             password: hashed_password,
+<<<<<<< HEAD
+            
+=======
+>>>>>>> 403086d969f72971f19dca6f54eef0f9633044bb
             authType: "manual"
         });        
         user.save()
@@ -118,12 +122,16 @@ app.post("/google-auth",async(req,res)=>{
     .then(async (decodeUser) => {
         let {email,name,picture}=decodeUser;
         picture=picture.replace("s96-c","s384-c") //resolution
+<<<<<<< HEAD
+        let user = await User.findOne({ email: email });
+=======
         let user=await User.findOne({"email":email}).then((u)=>{
             return u||null
         })
         .catch((err)=>{
             return res.status(500).json({"error":err.message})
         })
+>>>>>>> 403086d969f72971f19dca6f54eef0f9633044bb
         if(user){
             if(user.authType=="manual"){
                 return res.status(403).json({"error":"This email was signed up without google.Please login with password to access the account"})

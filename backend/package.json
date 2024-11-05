@@ -1,7 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
+<<<<<<< HEAD
+  "type": "module",
+=======
   "type":"module",
+>>>>>>> 403086d969f72971f19dca6f54eef0f9633044bb
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"

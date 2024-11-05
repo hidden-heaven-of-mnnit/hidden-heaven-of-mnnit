@@ -24,6 +24,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<TreasureLogin />} />
         <Route path="/signup" element={<TreasureLogin />} />
+        <Route path="/google-auth" element={<TreasureLogin />} />
         <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

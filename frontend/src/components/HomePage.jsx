@@ -1,16 +1,13 @@
 import React, { useContext } from "react";
 import "./HomePage.css";
-import TreasureLogin from "./TreasureLogin"; 
-import { UserContext } from "../App";
 
 const HomePage = () => {
-  const { userAuth } = useContext(UserContext); 
-  const name = userAuth?.name; 
-
-  return userAuth ? ( 
+  return (
     <div className="home-page">
+       <button onClick={logout}>Logout</button>
       <div className="content">
         <div className="login-box">
+          
           <h1 className="treasure-title">Welcome, {name}!</h1>
           <p className="treasure-subtitle">Unlock the treasure with your quests</p>
         </div>
@@ -54,13 +51,14 @@ const HomePage = () => {
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-  ) : (
-    <TreasureLogin /> 
-  );
+    </div>
+    
+  )
+  :
+  (<TreasureLogin/>);
 };
 
 export default HomePage;
