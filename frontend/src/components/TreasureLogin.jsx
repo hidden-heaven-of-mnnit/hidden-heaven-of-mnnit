@@ -32,6 +32,7 @@ const TreasureLogin = () => {
         navigate("/HomePage");
       })
       .catch(({ response }) => {
+        console.log(response)
         toast.error(response.data.error);
       });
   };

@@ -23,7 +23,6 @@ const HomePage = () => {
           <h1 className="treasure-title">Welcome, {name}!</h1>
           <p className="treasure-subtitle">Unlock the treasure with your quests</p>
         </div>
-
         <div className="quests-container">
           {/* Live Public Quest Section (Left) */}
           <div className="live-public-quest">
