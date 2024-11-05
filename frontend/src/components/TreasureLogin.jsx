@@ -1,15 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./TreasureLogin.css";
 import googleLogo from "../assets/google.png"; 
 import { Toaster, toast } from "react-hot-toast"; 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { storeInSession } from "../../../backend/session";
+import { UserContext } from "../App";
+import { authWithGoogle } from "../assets/firebase";
 
 const TreasureLogin = () => {
   const [action, setAction] = useState("login");
   const [previousAction, setPreviousAction] = useState("login");
   const navigate = useNavigate();
+  const { userAuth, setUserAuth } = useContext(UserContext);
 
   const handleClick = (e, actionType) => {
     if (actionType !== previousAction) {
@@ -23,10 +27,12 @@ const TreasureLogin = () => {
   const userAuthThroughServer = (serverRoute, formData) => {
     axios.post("http://localhost:3000" + serverRoute, formData)
       .then(({ data }) => {
-        console.log(data); 
+        storeInSession("user",JSON.stringify(data))
+        setUserAuth(data)
         navigate("/HomePage");
       })
       .catch(({ response }) => {
+        console.log(response)
         toast.error(response.data.error);
       });
   };
@@ -58,7 +64,20 @@ const TreasureLogin = () => {
     } 
     userAuthThroughServer(serverRoute,formData);
   };
-
+  const handleGoogleAuth=(e)=>{
+      e.preventDefault();
+      authWithGoogle()
+      .then(user=>{
+        let serverRoute="/google-auth"
+        let formData={
+          access_token:user.accessToken 
+        }
+        userAuthThroughServer(serverRoute,formData)
+      })
+      .catch(err=>{
+        toast.error("Some error occured")
+      })
+  }
   return (
     <>
       <div className="outerBox">
@@ -97,9 +116,9 @@ const TreasureLogin = () => {
                   </button>
                 </Link>
               </div>
-              <button className="google-button">
+              <button className="google-button" onClick={handleGoogleAuth}>
                 <img src={googleLogo} alt="Google" className="google-icon" />
-                <span className="google-label">Continue with Google</span>
+                Continue with Google
               </button>
             </form>
           </div>

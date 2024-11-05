@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -12,11 +12,10 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
     },
     image: {
         type: String,
-        default: null, 
+        default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png', 
     },
     authType: {
         type: String,
@@ -24,5 +23,5 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-const UserModel = mongoose.model("user", UserSchema);
-module.exports = UserModel;
+const UserModel = mongoose.model('user', UserSchema);
+export default UserModel;
