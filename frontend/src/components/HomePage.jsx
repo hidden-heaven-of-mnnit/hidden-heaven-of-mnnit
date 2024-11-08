@@ -54,11 +54,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-    </div>
-    
   )
-  :
-  (<TreasureLogin/>);
 };
 
 export default HomePage;
