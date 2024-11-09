@@ -6,6 +6,8 @@ import Error from './components/Error';
 import HomePage from './components/HomePage';
 import { createContext, useEffect, useState } from "react";
 import { lookInSession } from "../../backend/session";
+import CollegeMap from "./components/CollegeMap/CollegeMap";
+import About from "./components/about";
 
 export const UserContext=createContext({})
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<TreasureLogin />} />
         <Route path="/signup" element={<TreasureLogin />} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/collegemap" element={<CollegeMap />} />
         <Route path="/google-auth" element={<TreasureLogin />} />
         <Route path="*" element={<Error />} />
         </Routes>

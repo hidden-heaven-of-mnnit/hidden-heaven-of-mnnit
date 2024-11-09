@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import NavBar from "./NavBar";
 import "./HomePage.css";
 
 const HomePage = () => {
   return (
+    <>
+    <NavBar></NavBar>
     <div className="home-page">
-       <button onClick={logout}>Logout</button>
       <div className="content">
         <div className="login-box">
           
@@ -54,11 +55,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-    </div>
-    
-  )
-  :
-  (<TreasureLogin/>);
-};
+    </>
+  )}
 
 export default HomePage;

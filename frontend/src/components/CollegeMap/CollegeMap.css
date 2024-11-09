@@ -1,12 +1,3 @@
-.nav-bar-college-map{
-    height: 10%;
-    width: 100%;
-    display: flex;
-    cursor: pointer;
-    background-color: white;
-    color: black;
-}
-
 .college-map-outer-box{
     height: 100%;
     width: 90%;

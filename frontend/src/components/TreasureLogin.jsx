@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./TreasureLogin.css";
 import googleLogo from "../assets/google.png"; 
@@ -13,7 +13,7 @@ const TreasureLogin = () => {
   const [action, setAction] = useState("login");
   const [previousAction, setPreviousAction] = useState("login");
   const navigate = useNavigate();
-  const { userAuth, setUserAuth } = useContext(UserContext);
+  const { userUserAuth } = useContext(UserContext);
 
   const handleClick = (e, actionType) => {
     if (actionType !== previousAction) {
@@ -40,7 +40,7 @@ const TreasureLogin = () => {
   const handleSubmit = (e, actionType) => {
     e.preventDefault();
     let serverRoute = (actionType === "signup") ? "/signup" : "/login"; 
-    let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+    let emailRegex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/; 
     let form=new FormData(formElement);
     let formData={};
     for(let [key,value] of form.entries()){
@@ -93,7 +93,8 @@ const TreasureLogin = () => {
               {action === "signup" && <input type="text" name="name" placeholder="Name" className="input-field" />}
               <input type="email" name="email" placeholder="Email" className="input-field" />
               <input type="password" name="password" placeholder="Password" className="input-field" />
-              {action === "signup" && <input type="file" id="profile-image" className="input-field"/>}
+              {action === "signup" && <label htmlFor="profile-image">Select Image</label>
+ && <input type="file" placeholder="test" id="profile-image" name="profile-image" className="input-field"/>}
               {action === "login" && (
                 <div className="forgot-pass">
                   <p>Lost Password? <span>Click here!</span></p>
@@ -128,4 +129,4 @@ const TreasureLogin = () => {
   );
 };
 
-export default TreasureLogin; 
+export default TreasureLogin;

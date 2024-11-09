@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CollegeMap.css";
+import NavBar from "../NavBar";
 
 const CollegeMap = () => {
   let mapElement = [
@@ -12,10 +13,7 @@ const CollegeMap = () => {
   return (
     <>
       <div className="college-map">
-        <nav className="nav-bar-college-map">
-            <span>Home</span> &nbsp; &nbsp; &nbsp;
-            <span>Create Map</span>
-        </nav>
+        <div className="nav-bar">{<NavBar/>}</div>
         <div className="college-map-main">
           <div className="college-map-outer-box">
             {
