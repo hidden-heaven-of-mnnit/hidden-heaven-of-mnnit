@@ -8,6 +8,7 @@ import { createContext, useEffect, useState } from "react";
 import { lookInSession } from "../../backend/session";
 import CollegeMap from "./components/CollegeMap/CollegeMap";
 import About from "./components/about";
+import CollegeMap from "./components/CollegeMap/CollegeMap";
 
 export const UserContext=createContext({})
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
         <Route path="/" element={<TreasureLogin />} />
+        <Route path="/CollegeMap" element={<CollegeMap />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<TreasureLogin />} />
         <Route path="/signup" element={<TreasureLogin />} />
