@@ -1,0 +1,73 @@
+.contact-page {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1608924066819-930edc42986a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-content {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  .contact-title {
+    font-size: 2.5rem;
+    color: #FFD700;
+    margin-bottom: 20px;
+  }
+  
+  .team-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FFD700;
+    width: 200px;
+  }
+  
+  .team-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .member-name {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .icon-links {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .contact-icon {
+    font-size: 1.5rem;
+    color: #FFD700;
+    transition: color 0.3s;
+  }
+  
+  .contact-icon:hover {
+    color: #FFFFFF;
+  }
+  

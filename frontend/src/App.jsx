@@ -6,9 +6,11 @@ import Error from './components/Error';
 import HomePage from './components/HomePage';
 import { createContext, useEffect, useState } from "react";
 import { lookInSession } from "../../backend/session";
-import CollegeMap from "./components/CollegeMap/CollegeMap";
+// import CollegeMap from "./components/CollegeMap/CollegeMap";
 import About from "./components/about";
 import CollegeMap from "./components/CollegeMap/CollegeMap";
+import ContactUs from "./components/ContactUs";
+// import CollegeMap from "./components/CollegeMap/CollegeMap";
 
 export const UserContext=createContext({})
 function App() {
@@ -29,6 +31,7 @@ function App() {
         <Route path="/login" element={<TreasureLogin />} />
         <Route path="/signup" element={<TreasureLogin />} />
         <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<ContactUs/>} />
         <Route path="/collegemap" element={<CollegeMap />} />
         <Route path="/google-auth" element={<TreasureLogin />} />
         <Route path="*" element={<Error />} />
